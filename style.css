@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: #222;
+}
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+}
+.btn {
+    border: 1px solid #222;
+    border-radius: 16px;
+    background:  #fff;
+    padding: 15px 45px;
+    color: #222;
+    font-family:  inherit;
+    font-size: 1rem;
+    width: 100%;
+}
+.btn.disable{
+    display: none;
+}
+.btn:focus{
+    outline: none;
+}
+
+.btn.-rised:active{
+    box-shadow: 0px 0px 2px #22222280, 0px 0px 1px 0px #22222280;
+}
+.action-buttons{
+    text-align: center;
+}
+.-rised{
+    box-shadow: 0px 1px 4px #22222280, 1px 0px 2px 0px #22222280;
+}
+li.time-mark {
+    list-style: none;
+    text-align: center;
+    border: 1px solid #dbdbdb;
+    margin-bottom: -1px;
+    display: flex;
+}
+
+ul#js-last {
+    padding:  0;
+}
+
+h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 400;
+    line-height: 40px;
+}
+li.time-mark >span {
+    color: #66666685;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.-primary {
+    background: #98ffdf;
+    border-color: #98ffdf;
+    color: #222;
+    font-size: 1.5rem;
+    text-transform: lowercase;
+    font-weight: 400;
+}
+button.btn.-celar {
+    padding:  0;
+    border:  0;
+    color: #bbb;
+    width: 62px;
+    height: 60px;
+    margin-left: auto;
+}
+button.btn.-celar i {
+    font-size: 2rem;
+    line-height: 62px;
+    font-weight:  400;
+}
+li.time-mark .-left {
+    display: flex;
+    line-height: 62px;
+    padding-left: 16px;
+    flex-wrap: wrap;
+}
+li.time-mark .-left > span {
+    width: 100%;
+    line-height:  17px;
+    font-size:  14px;
+    text-align:  left;
+    color: #aaa;
+}

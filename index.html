@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pora karmienia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+</head>
+<body>
+<header>
+  <h1>pora karmienia</h1>
+</header>
+<main>     
+<section>
+  <div>
+    <form action="">
+        <div class="v-element">
+            <label for="variant_1">ile czasu do nastepnego karmienia:</label>
+            <div class="v-controllers" >
+                <span class="minus">-</span>
+                <input value="0" class="v-input" type="text" name="interval" id="interval" autocomplete="off">
+                <span class="plus">+</span>
+            </div>                       
+        </div>
+      <button id='js-set-interval'>ustaw</button>
+    </form>
+  </div>
+</section>   
+ <section>
+  <div class="card">
+    <div class="-title">
+      <h2>Ostatnio Karmiłaś</h2>
+    </div>
+    <div class="">
+      <ul id="js-last"></ul>
+    </div>
+  </div>
+  </section>
+  <section>
+    <div class="action-buttons">
+      <button class="btn -primary -rised" id="js-start">karmię</button>
+      <button class="btn -primary -rised disable" id="js-stop">koniec karmienia</button>
+    </div>
+</section>
+</main>
+    <footer></footer>
+    <script src="main.js"></script>
+</body>
+</html>
