@@ -62,7 +62,13 @@ function createTimeStart(date, time){
     divLeft.appendChild(span);
     divLeft.appendChild(h3);    
     h3.innerText = time;
-    lastTime.appendChild(li);
+
+    if(document.querySelectorAll('.time-mark').length == 0){
+        lastTime.appendChild(li);
+    }else{
+       lastTime.insertBefore(li, lastTime.childNodes[0]);
+    }
+    
     clearlistener();
 }
 
@@ -93,18 +99,3 @@ function clearlistener(){
     }
 };
 
-var intervalValue = '';
-    
-const plus = document.querySelector('.v-controllers > .plus');
-const minus = document.querySelector('.v-controllers > .minus');
-const inputs = document.getElementById('interval');
-var currentValue = inputs.value;
-
-plus.addEventListener('click', function(){
-    currentValue = inputs.value;
-    inputs.value = parseInt(currentValue) + 1;
-});
-minus.addEventListener('click', function(){
-    currentValue = inputs.value;
-    inputs.value = parseInt(currentValue) - 1;
-})
