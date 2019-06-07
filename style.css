@@ -5,7 +5,7 @@
     50%{color:transparent;}
     100%{color:#222;}
 }
-h3.--from.waiting {
+h3.--to.waiting {
     animation: blink 1s infinite;
 }
 *{

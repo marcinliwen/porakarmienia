@@ -51,14 +51,14 @@ function getCurrentTime(){
 function createTimeStart(date, time){
     document.querySelector('.time-mark .-left .--from').innerHTML = time;
     document.querySelector('.time-mark .-left .--to').innerHTML = "do";
-    document.querySelector('.time-mark .-left .--from').classList.add('waiting');
+    document.querySelector('.time-mark .-left .--to').classList.add('waiting');
     document.querySelector('.time-mark  .--date').innerHTML = date;
     document.querySelector('.time-mark').classList.add('active');
 }
 
 function createTimeStop(time){
     document.querySelector('.time-mark .-left .--to').innerHTML = time;
-    document.querySelector('.time-mark .-left .--from').classList.remove('waiting');
+    document.querySelector('.time-mark .-left .--to').classList.remove('waiting');
 }
 
 
