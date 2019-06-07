@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700&display=swap');
 
+@keyframes blink{
+    0%{color: #222;}
+    50%{color:transparent;}
+    100%{color:#222;}
+}
+h3.--from.waiting {
+    animation: blink 1s infinite;
+}
 *{
     box-sizing: border-box;
 }
@@ -64,17 +72,20 @@ header{
 .-rised{
     box-shadow: 0px 1px 4px #22222280, 1px 0px 2px 0px #22222280;
 }
-li.time-mark {
+.time-mark {
     list-style: none;
     text-align: center;
     border: 1px solid #dbdbdb;
-    margin-bottom: -1px;
     display: flex;
     background: #fff;
-    padding: 16px 0 16px 8px;
+    padding: 16px;
+    opacity: .2;
+    flex-wrap:  wrap;
 }
-
-ul#js-last {
+.time-mark.active{
+   opacity: 1;
+}
+#js-last {
     padding:  0;
     margin: 0;
     /* margin-top: 16px; */
@@ -85,9 +96,10 @@ h3 {
     text-align: center;
     margin: 0;
     font-weight: 300;
-    line-height: 40px;
+    line-height: 62px;
+    display: inline-block;
 }
-li.time-mark >span {
+.time-mark >span {
     color: #66666685;
     font-weight: 400;
     font-size: 0.9rem;
@@ -104,27 +116,25 @@ li.time-mark >span {
 button.btn.-celar {
     padding:  0;
     border:  0;
-    color: #bbb;
+    color: #222;
     width: 62px;
-    height: 60px;
+    height: 48px;
     margin-left: auto;
 }
 button.btn.-celar i {
     font-size: 2rem;
-    line-height: 62px;
+    line-height: 48px;
     font-weight:  300;
 }
-li.time-mark .-left {
-    display: flex;
-    line-height: 62px;
-    flex-wrap: wrap;
-}
-li.time-mark .-left > span {
-    width: 100%;
-    line-height:  17px;
-    font-size:  14px;
-    text-align:  left;
-    color: #aaa;
+.time-mark .-left {
+    width: 100%;color: #222;
+    background: #f6f6f6;}
+
+.time-mark .-left .--break {
+  line-height: 62px;
+  margin:  0 16px;
+  font-size: 2rem;
+  display: inline-block;
 }
 .card {
     padding: 16px 8px;
@@ -137,4 +147,9 @@ li.time-mark .-left > span {
 main {
     padding: 32px 8px;
     margin-top: 64px;
+}
+.--header {
+    width:  100%;
+    display: flex;
+    align-items: start;
 }

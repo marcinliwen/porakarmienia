@@ -10,14 +10,18 @@ const clearLastBtn = document.getElementById('js-clear-last');
 
 window.onload = function(){
     getCurrentTime();
-    }
+}
 
 
 
 function getCurrentTime(){
     startFeedBtn.addEventListener('click', function(){
         var today = new Date();
-        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var day = today.getDate();
+        var month = today.getMonth();
+        day = (day < 10) ? '0'+ day : day;
+        month = (month < 10) ? '0'+month :month;
+        var date =day +"-"+month+"-"+ today.getFullYear();
         var hours = today.getHours();
         var minutes = today.getMinutes();
         hours = (hours < 10) ? '0'+ hours : hours;
@@ -45,57 +49,17 @@ function getCurrentTime(){
 
 
 function createTimeStart(date, time){
-    var li = document.createElement('li');
-    var divLeft = document.createElement('div');
-    divLeft.setAttribute('class', '-left');
-    var h3 = document.createElement('h3');
-    var span = document.createElement('span');
-    span.innerText = date;
-    var button = document.createElement('button');  
-
-    li.setAttribute('class', 'time-mark current');
-    li.appendChild(divLeft);
-
-    li.appendChild(button);
-    button.innerHTML= '<i class="material-icons">close </i>';
-    button.setAttribute('class', 'btn -celar js-clear-selected');
-    divLeft.appendChild(span);
-    divLeft.appendChild(h3);    
-    h3.innerText = time;
-
-    if(document.querySelectorAll('.time-mark').length == 0){
-        lastTime.appendChild(li);
-    }else{
-       lastTime.insertBefore(li, lastTime.childNodes[0]);
-    }
-    
-    clearlistener();
+    document.querySelector('.time-mark .-left .--from').innerHTML = time;
+    document.querySelector('.time-mark .-left .--to').innerHTML = "do";
+    document.querySelector('.time-mark .-left .--from').classList.add('waiting');
+    document.querySelector('.time-mark  .--date').innerHTML = date;
+    document.querySelector('.time-mark').classList.add('active');
 }
 
 function createTimeStop(time){
-    //var h3 = document.createElement('h3');
-    //h3.innerText = "- " + time;
-    document.querySelector('.time-mark.current .-left h3').textContent += " - " + time;
-   // document.querySelector('.time-mark.current .-left').appendChild(h3);
-    document.querySelector('.time-mark.current').classList.remove('current');
-    clearlistener();
+    document.querySelector('.time-mark .-left .--to').innerHTML = time;
+    document.querySelector('.time-mark .-left .--from').classList.remove('waiting');
 }
 
 
-function clearlistener(){
-    
-    var clearSelected = document.getElementsByClassName('js-clear-selected');
-    for (let i = 0; i < clearSelected.length; i++){
-        clearSelected[i].addEventListener('click', function(e){
-                if(this.parentNode.classList.contains('current')){
-                        startFeedBtn.classList.remove('disable');
-                        stopFeedBtn.classList.add('disable');
-                        this.parentNode.remove();
-                }else{
-                    this.parentNode.remove();
-                }
-                
-        })
-    }
-};
 
