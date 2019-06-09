@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,700&display=swap');
+
+@keyframes blink{
+    0%{color: #222;}
+    50%{color:transparent;}
+    100%{color:#222;}
+}
+h3.--to.waiting {
+    animation: blink 1s infinite;
+    
+}
+*{
+    box-sizing: border-box;
+}
+html,body{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: #222;
+    background: mintcream;
+    font-weight: 300;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+    font-weight:  300;
+    margin: 0px;
+}
+h1 {
+    font-size: 28px;
+    line-height: 32px;
+}
+header{
+    padding: 16px  0;
+    background: #98ffdf;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    position:  fixed;
+    top: 0;
+    left: 0;
+    right:  0;
+    height: 64px;
+}
+.btn {
+    border: 1px solid #222;
+    border-radius: 16px;
+    background:  #fff;
+    padding: 15px 45px;
+    color: #222;
+    font-family:  inherit;
+    font-size: 1rem;
+    width: 100%;
+}
+.btn.disable{
+    display: none;
+}
+.btn:focus{
+    outline: none;
+}
+
+.btn.-rised:active{
+    box-shadow: 0px 0px 2px #22222280, 0px 0px 1px 0px #22222280;
+}
+.action-buttons{
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16px 8px;
+    z-index: 999;
+}
+.-rised{
+    box-shadow: 0px 1px 4px #22222280, 1px 0px 2px 0px #22222280;
+}
+.time-mark {
+    list-style: none;
+    text-align: center;
+    border: 1px solid #dbdbdb;
+    display: flex;
+    background: #fff;
+    padding: 16px;
+    
+    flex-wrap:  wrap;
+}
+.inactive{
+    opacity: .2;
+ }
+#js-last {
+    padding:  0;
+    margin: 0;
+    /* margin-top: 16px; */
+}
+
+h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+    font-weight: 300;
+    line-height: 62px;
+    display: inline-block;
+}
+.time-mark >span {
+    color: #66666685;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.-primary {
+    background: #98ffdf;
+    border-color: #98ffdf;
+    color: #222;
+    font-size: 1.5rem;
+    text-transform: lowercase;
+    font-weight: 300;
+}
+button.btn.-celar {
+    padding:  0;
+    border:  0;
+    color: #222;
+    width: 62px;
+    height: 48px;
+    margin-left: auto;
+}
+button.btn.-celar i {
+    font-size: 2rem;
+    line-height: 48px;
+    font-weight:  300;
+}
+.time-mark .-left {width: 100%;color: #222;
+    background: #f6f6f6;}
+.time-mark .-left .--break {
+  line-height: 62px;
+  margin:  0 16px;
+  font-size: 2rem;
+  display: inline-block;
+}
+.card {
+    padding: 16px 8px;
+    border-radius:  6px;
+    background:  #fff;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    margin-bottom: 8px;
+}
+
+main {
+    padding: 32px 8px;
+    margin-top: 64px;
+}
+.--header {
+    width:  100%;
+    display: flex;
+    align-items: start;
+}
