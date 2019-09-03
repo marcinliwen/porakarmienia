@@ -4,52 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#98ffdf">
     <title>pora karmienia</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     
+
 </head>
 <body>
 <header>
   <h1>pora karmienia</h1>
 </header>
+  
 <main>        
- <section>
-  <div class="card ">
-    <div class="-title">
-      <h2>Ostatnio Karmiłaś</h2>
-    </div> 
-      <div id="js-last" class="inactive">
-          <div class="time-mark current">
-            <div class="--header">  
-              <span class="--date">data</span>
-            </div>
-            <div class="-left"><h3 class="--from">od</h3> <span class="--break">-</span><h3 class="--to">do</h3></div>
-          </div>
-      </div>    
-  </div>
-   <div class="card ">
-    <div class="-title">
-      <h2>Następne karmienie</h2>
-    </div> 
+  <section id="timeline">
+    <article class="day">
+      <div class="day__date --date"> </div>
+      <div class="day__container"></div>
+    </article>
+    <template id="event">
+      <div id="js-next"  class="event_container inactive">
+        <div class="event__time"><h3 class="--next">następne</h3></div>
+        <div class="event__name"> <h2>Karmienie</h2></div>
+        <div class="event__side"><h3 class="--side"></h3> </div>
+        <!--<div class="event__date"><span class="--date">data</span></div>-->
+      </div>
+    </template>
+    
+
+   <!-- <div class="card ">
+      <div class="-title">
+        <h2>Karmienie</h2>
+      </div> 
       <div id="js-next"  class="inactive">
           <div class="time-mark ">
             <div class="--header">  
               <span class="--date">data</span>
             </div>
-            <div class="-left"><h3 class="--next">następne</h3> </div>
+            <div class="-left"><h3 class="--next">następne</h3><h3 class="--side"></h3> </div>
           </div>
       </div>    
     </div>
+  -->
   </section>
-  <section>
-    <div class="action-buttons">
-      <button class="btn -primary -rised" id="js-start">karmię</button>
-      <button class="btn -primary -rised disable" id="js-stop">koniec karmienia</button>
+ 
+  <section id="feed-board" >
+    <div class="close"><span  id="close-feed" class="close__btn">+</span></div>
+    <div class="display">
+      <div class="card ">
+        <div class="-title">
+          <h2>Ostatnio Karmiłaś</h2>
+        </div> 
+          <div id="js-last" class="inactive">
+              <div class="time-mark current">
+                <div class="--header">  
+                  <span class="--date">data</span>
+                </div>
+                <div class="-left"><h3 class="--from">od</h3> <span class="--break">-</span><h3 class="--to">do</h3></div>
+              </div>
+          </div>    
+      </div>
+      <div class="feed-timer">
+        <div id="feed-timer" class="feed-timer__display"></div>
+      </div>
     </div>
-</section>
+    <div class="action-buttons">
+          <button  id="js-start-l" class="btn -primary  -side"><span>lewa</span></button>
+      
+     
+      <button id="js-start-r" class="btn -primary  -side"><span>prawa</span></button>
+    
+      
+    </div>
+  </section>
 </main>
-    <footer></footer>
+    <footer>
+      <nav>
+        <ul>          
+          <li>home</li>
+          <li  class="add-event"><span id="add-event">+</span>
+            <div class="event-nav">
+              <ul class="even-nav__container">
+                <li id="open" class="event-nav__element">karmię</li>
+                <li id="sleep" class="event-nav__element">śpię</li>
+                <li id="diaper" class="event-nav__element">przewijam</li>
+              </ul>
+            </div>
+          </li>
+          <li>kalendarz</li>
+        </ul>
+      </nav>
+    </footer>
     <script src="main.js"></script>
 </body>
 </html>
