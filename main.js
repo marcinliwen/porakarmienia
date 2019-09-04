@@ -49,13 +49,16 @@ window.onload = function(){
         document.querySelector('.add-event').classList.remove('open');
         document.getElementById('feed-board').classList.remove('-open');
     }
-    let openRequest = indexedDB.open("karmienie", 8);
+    var DB_VERSION = 11;
+    var BD_NAME = 'karmienie';
+
+    let openRequest = indexedDB.open(BD_NAME,  DB_VERSION );
     
     openRequest.onupgradeneeded = function() {
         db = openRequest.result;
-        if (!db.objectStoreNames.contains('data')) { // if there's no "lastTime" store
-          db.createObjectStore('data', {autoIncrement:true});
-         
+        if (!db.objectStoreNames.contains('data')) { // if there'ss no "data" store
+          db.createObjectStore('data', {autoIncrement: true});
+            console.log('[iDB - object \'data\' createed');
         }
 
     };
@@ -66,76 +69,43 @@ window.onload = function(){
     
     
     openRequest.onsuccess = function() {
+        console.log('[iDB - is created]')
         db = openRequest.result;
         // continue to work with database using db object
-        setTimeNext(currentTime = 0, 2);
+        setTimeNext();
         
     };
     
-    createTimeEvent();
+    
 }
 
 
-function addToDB(lastTime, side){
-    var data = {'lastTime': lastTime, 'side':side};
+function addToDB(data, side){
+    var data = {'data': data, 'strona':side};
     console.log(data);
     
-        var objectStore = db.transaction("lastTime", "readwrite").objectStore("lastTime");
-        var request = objectStore.get("last");
-        request.onerror = function(event) {
-        // Handle errors!
+        var karmienieEvent = db.transaction("data", "readwrite").objectStore("data");
+        //var request = objectStore.get("last");
+        let newData = {
+            //id : 'last',
+            data: data
         };
-        request.onsuccess = function(event) {
-       /* if (request.result != undefined) { 
-            // Get the old value that we want to update
-            let data = event.target.result;
-            console.log(data);
-            // update the value(s) in the object that you want to change
-            data.last_time = lastTime;
-            
-            // Put this updated object back into the database.
-            let requestUpdate = objectStore.put(data);
-            requestUpdate.onerror = function(event) {
-                // Do something with the error
-            };
-            requestUpdate.onsuccess = function(event) {
-                // Success - the data is updated!
-            };
-        }else{*/
-        
-            let newData = {
-                //id : 'last',
-                data: data
-            };
 
-            let request = objectStore.add(newData); // (3)
+        let request = karmienieEvent.add(newData); // (3)
 
-            request.onsuccess = function() { // (4)
-            console.log("czas dodany", request.result);
-            };
+        request.onsuccess = function() { // (4)
+        console.log("czas dodany", request.result);
+        };
 
-            request.onerror = function() {
-            console.log("Error", request.error);
-            };
-    //}
-}
+        request.onerror = function() {
+        console.log("Error", request.error);
+        };
 }
 
-function setTimeNext(currentTime, interval){
-
-    if(currentTime!= 0){
-        var timeInterval = interval * 3600000;
-        console.log(currentTime);
-        var nextTime = currentTime + timeInterval;
-        var date = new Date(nextTime);
-        
-        var nextaDate =  convertDateObjectToDate(date);
-        document.querySelector('.--next').innerHTML = nextaDate.time;
-        document.querySelector('.--date').innerHTML = nextaDate.date;
-    }else{
-        
-        let transaction = db.transaction("lastTime", "readwrite");
-        let objectStore = transaction.objectStore("lastTime");
+function setTimeNext(){
+       
+        let transaction = db.transaction("data", "readwrite");
+        let objectStore = transaction.objectStore("data");
         let request = objectStore.getAll();
         
         request.onerror = function(event) {
@@ -147,32 +117,33 @@ function setTimeNext(currentTime, interval){
             if(request.result != undefined){
 
                 var currentTime = request.result;
+                console.log(currentTime);
 
-            currentTime.forEach(function(element){
-                console.log("interwał:" +interval);
-                var timeInterval = interval * 3600000;
-                console.log("data:" + element.data.lastTime);
-                console.log("strona:" + element.data.side);
-                var nextTime = element.data.lastTime;
-                var date = new Date(nextTime);
-                
-                var nextaDate =  convertDateObjectToDate(date);
-                console.log(nextaDate);
-                document.querySelector('.--next').innerHTML = nextaDate.time;
-                document.querySelector('.--date').innerHTML = nextaDate.date; 
-                document.querySelector('.--side').innerHTML = element.data.side;
-            })
+                currentTime.forEach(function(element){
+                    
+                    
+                    console.log("data:" + element.data.data);
+                    console.log("strona:" + element.data.strona);
+                    var nextTime = element.data.data;
+                    var date = new Date(nextTime);
+                    
+                    var nextaDate =  convertDateObjectToDate(date);
+                    console.log(nextaDate);
+                   // document.querySelector('.--next').innerHTML = nextaDate.time;
+                    //document.querySelector('.--date').innerHTML = nextaDate.date; 
+                    //document.querySelector('.--side').innerHTML = element.data.strona;
+                    createTimeElement(nextaDate.time, nextaDate.date , element.data.strona );
+                })
+              
                     
                 
             }
             
         };
-        document.querySelector('#js-next').classList.remove('inactive');
+       // document.querySelector('#js-next').classList.remove('inactive');
     
     }
         
-    
-}
 
 
 function getCurrentTime(){
@@ -201,8 +172,8 @@ function getCurrentTime(){
             minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
             var time = hours+':'+minutes;
             createTimeStop(time);
-            setTimeNext(nextTime,2);
-            //addToDB(nextTime, feedSide);
+            //setTimeNext(nextTime,2);
+            addToDB(nextTime, feedSide);
 
         }else{
             
@@ -217,7 +188,7 @@ function getCurrentTime(){
                 minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
                 var time = hours+':'+minutes;
                 createTimeStop(time);
-                setTimeNext(nextTime,2);
+                //setTimeNext(nextTime,2);
 
 
             };
@@ -244,8 +215,8 @@ function getCurrentTime(){
         };
         
         
-      
-        addToDB(nextTime, feedSide);
+
+        //addToDB(nextTime, feedSide);
     });
     
    
@@ -271,8 +242,8 @@ function getCurrentTime(){
             minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
             var time = hours+':'+minutes;
             createTimeStop(time);
-            setTimeNext(nextTime,2);
-            //addToDB(nextTime, feedSide);
+            //setTimeNext(nextTime,2);
+            addToDB(nextTime, feedSide);
         }else{
 
             
@@ -288,8 +259,8 @@ function getCurrentTime(){
                 minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
                 var time = hours+':'+minutes;
                 createTimeStop(time);
-                setTimeNext(nextTime,2);
-                //addToDB(nextTime, feedSide);
+                //setTimeNext(nextTime,2);
+                addToDB(nextTime, feedSide);
 
             };
             var today = new Date();
@@ -369,7 +340,7 @@ function convertDateObjectToDate(today){
     return {date, time};
 }
 
-
+/*
 function createTimeEvent(){
     if ('content' in document.createElement('template')) {
         var eventCard = document.getElementById('event');
@@ -378,7 +349,7 @@ function createTimeEvent(){
     }
 }
 
-
+*/
 
 function displayTimer(){     
     var hour = Math.floor(totalSeconds /3600);
@@ -423,3 +394,15 @@ startFeedBtnR.addEventListener('click', function(){
         }
 
 });
+
+/**
+ * print all data from indexedDB
+ */
+
+
+function createTimeElement(time, data, strona){
+    var timeList = document.getElementById('timeline');
+    var eventElement = document.createElement('div');
+    eventElement.innerHTML = '<div class="event_container inactive"><div class="event__time"><h3 class="--next">'+time+'</h3></div><div class="event__name"> <h2>Karmienie</h2></div><div class="event__side"><h3 class="--side">'+strona+'</h3> </div></div>';
+    timeList.appendChild(eventElement);
+}
