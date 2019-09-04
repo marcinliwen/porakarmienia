@@ -308,6 +308,7 @@ section#timeline:after {
     height: 300px;
     border-radius: 6px;
     transition-duration: .3s;
+    padding: 32px;
 }
 li.add-event.open #add-event {
     transform: rotate(135deg);
@@ -322,12 +323,12 @@ li.add-event.open .event-nav {
     display: block;
 }
 .even-nav__container {
-    padding: 0;
     list-style: none;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
     margin-top: 32px;
+    padding: 0;
 }
 
 .event-nav__element {
@@ -391,21 +392,21 @@ li.add-event.open .event-nav {
 }
 button#js-start-l {
     left: 40px;
-    transition: all cubic-bezier(0.895, 0.03, 0.685, 0.22) 0.4s;
+    transition: all ease-in-out 0.4s;
 }
 
 button#js-start-r {
     right: 40px;
-    transition: all cubic-bezier(0.895, 0.03, 0.685, 0.22) 0.4s;
+    transition: all ease-in-out 0.4s;
 }
 
 button#js-start-l.active {
     left: calc(50% - 48px)!important;
-   transition: all cubic-bezier(0.895, 0.03, 0.685, 0.22) 0.4s;
+   transition: all ease-in-out 0.4s;
 }
 button#js-start-r.active {
     right: calc(50% - 48px)!important;
-   transition: all cubic-bezier(0.895, 0.03, 0.685, 0.22) 0.4s;
+   transition: all ease-in-out 0.4s;
 }
 button#js-start-r.inactive,
 button#js-start-l.inactive{

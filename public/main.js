@@ -49,6 +49,7 @@ window.onload = function(){
         document.querySelector('.add-event').classList.remove('open');
         document.getElementById('feed-board').classList.remove('-open');
     }
+
     let openRequest = indexedDB.open("karmienie", 8);
     
     openRequest.onupgradeneeded = function() {
@@ -201,8 +202,8 @@ function getCurrentTime(){
             minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
             var time = hours+':'+minutes;
             createTimeStop(time);
-            setTimeNext(nextTime,2);
-            //addToDB(nextTime, feedSide);
+            //setTimeNext(nextTime,2);
+            addToDB(nextTime, feedSide);
 
         }else{
             
@@ -217,7 +218,7 @@ function getCurrentTime(){
                 minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
                 var time = hours+':'+minutes;
                 createTimeStop(time);
-                setTimeNext(nextTime,2);
+                //setTimeNext(nextTime,2);
 
 
             };
@@ -244,8 +245,8 @@ function getCurrentTime(){
         };
         
         
-      
-        addToDB(nextTime, feedSide);
+
+        //addToDB(nextTime, feedSide);
     });
     
    
@@ -271,8 +272,8 @@ function getCurrentTime(){
             minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
             var time = hours+':'+minutes;
             createTimeStop(time);
-            setTimeNext(nextTime,2);
-            //addToDB(nextTime, feedSide);
+            //setTimeNext(nextTime,2);
+            addToDB(nextTime, feedSide);
         }else{
 
             
@@ -288,8 +289,8 @@ function getCurrentTime(){
                 minutes = (minutes < 10 ) ? '0'+ minutes : minutes;
                 var time = hours+':'+minutes;
                 createTimeStop(time);
-                setTimeNext(nextTime,2);
-                //addToDB(nextTime, feedSide);
+                //setTimeNext(nextTime,2);
+                addToDB(nextTime, feedSide);
 
             };
             var today = new Date();
