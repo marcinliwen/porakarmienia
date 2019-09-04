@@ -151,7 +151,8 @@ button.btn.-celar i {
 
 main {
     padding: 0;
-    margin-top: 64px;
+    padding-top: 64px;
+    padding-bottom: 60px;
     height: 100%;
 }
 .--header {

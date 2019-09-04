@@ -321,7 +321,7 @@ function createTimeStart(date, time){
 function createTimeStop(time){
     document.querySelector('.time-mark .-left .--to').innerHTML = time;
     document.querySelector('.time-mark .-left .--to').classList.remove('waiting');
-    document.querySelector('#js-next').classList.remove('inactive');
+    //document.querySelector('#js-next').classList.remove('inactive');
 }
 
 
@@ -404,5 +404,5 @@ function createTimeElement(time, data, strona){
     var timeList = document.getElementById('timeline');
     var eventElement = document.createElement('div');
     eventElement.innerHTML = '<div class="event_container inactive"><div class="event__time"><h3 class="--next">'+time+'</h3></div><div class="event__name"> <h2>Karmienie</h2></div><div class="event__side"><h3 class="--side">'+strona+'</h3> </div></div>';
-    timeList.appendChild(eventElement);
+    timeList.prepend(eventElement);
 }
